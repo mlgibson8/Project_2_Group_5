@@ -1,9 +1,9 @@
 # Project_2_Group_5
-  [!Github License:MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+  ![Github License:MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ## Description
   Interactive Full-Stack Application
 ## Screenshots
-    ![Screenshot](undefined)
+  ![Screenshot](undefined)
 ## Table of Contents
 * [Installation](#installation)
 * [Features](#features)
