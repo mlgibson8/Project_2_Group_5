@@ -6,7 +6,7 @@ const options = {
     }
 };
 
-fetch('https://api.themoviedb.org/3/search/movie?query=Puss%2520in%2520Boots&include_adult=false&language=en-US&page=1', options)
+fetch('https://api.themoviedb.org/3/search/movie?query=Nemo&include_adult=false&language=en-US&page=1', options)
     .then(response => response.json())
     .then(response => console.log(response))
     .catch(err => console.error(err));
