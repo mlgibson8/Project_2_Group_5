@@ -1,47 +1,33 @@
-const loginFormHandler = async (event) => {
-    event.preventDefault();
-  
-    const email = document.querySelector('#login-email').value.trim();
-    const password = document.querySelector('#login-pass').value.trim();
-  
-    if (email && password) {
-      const response = await fetch('/api/users/login', {
-        method: 'POST',
-        body: JSON.stringify({ email, password }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-  
-      if (response.ok) {
-        document.location.replace('/');
-      } else {
-        alert('Failed to log in.');
-      }
+// login form handler
+const loginForm = document.getElementById('login-form');
+const loginStatusEl = document.getElementById('signin-status');
+// Function to handle the login form submission
+async function loginFormHandler(event) {
+  event.preventDefault();
+ // Get the email and password from the form
+  const email = document.getElementById('email-login').value;
+  const password = document.getElementById('password-login').value;
+  // If the email and password are not empty, submit the form
+  if (email && password) {
+    const response = await fetch('/api/users/login', {
+      method: 'post',
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+// If the response is ok, redirect to the dashboard
+    if (response.ok) {
+      document.location.replace('/dashboard');
+    } else
+    // If the response is not ok, alert the user
+    {
+      loginStatusEl.textContent = 'Email or Password is incorrect';
+      
     }
-  };
-  
-  const signupFormHandler = async (event) => {
-    event.preventDefault();
-  
-    const username = document.querySelector('#signup-name').value.trim();
-    const email = document.querySelector('#signup-email').value.trim();
-    const password = document.querySelector('#signup-pass').value.trim();
-  
-    if (username && email && password) {
-      const response = await fetch('/api/users', {
-        method: 'POST',
-        body: JSON.stringify({ username, email, password }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-  
-      if (response.ok) {
-        document.location.replace('/');
-      } else {
-        alert('Failed to sign up.');
-      }
-    }
-  };
-  
-  document.querySelector('#login-submit-btn').addEventListener('click', loginFormHandler);
-  
-  document.querySelector('#signup-submit-btn').addEventListener('click', signupFormHandler);
-  
+  }
+}
+
+
+loginForm.addEventListener('submit', loginFormHandler);
