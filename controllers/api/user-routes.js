@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
         res.json(err);})
     });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', async (req   , res) => {
     await User.findOne({
         where: {
             id: req.params.id

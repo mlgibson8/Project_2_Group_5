@@ -29,8 +29,6 @@ router.post('/', async (req, res) => {
         post_id: req.body.post_id
     })
     .then((Comment) => res.json(Comment));
-            })
-    .catch((err) => {
-        res.json(err);})
-
+            });
+   
 module.exports = router;
