@@ -1,9 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+// create our Post model
+class Post extends Model {}
 
-class Comment extends Model {}
-// sets the columns in the comment table, with the id column being the primary key and auto-incrementing
-Comment.init(
+// create the columns for the post table with the id column being the primary key and auto-incrementing
+Post.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,25 +12,25 @@ Comment.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    comment_text: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [4],
       },
     },
-    // references the user and post tables with the foreign key constraints
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1],
+      },
+    },
+    // The user_id is the foreign key and will be the matching link between the post and user models
     user_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'user',
-        key: 'id',
-      },
-    },
-    post_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'post',
         key: 'id',
       },
     },
@@ -38,8 +39,8 @@ Comment.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'comment',
+    modelName: 'post',
   }
 );
 
-module.exports = Comment;
+module.exports = Post;

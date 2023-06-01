@@ -1,0 +1,16 @@
+<section class="container">
+    <img src="{{movie.filename}}" alt="{{movie.name}}">
+    <h3 class="movie-name">{{movie.name}}</h3>
+    <h4>Description</h4>
+        <p>{{movie.description}}</p>
+    {{#if loggedIn}}
+    <section class="flex-row justify-center">
+        {{#each .comments as |comment|}}
+        {{> comment-details}}
+        {{/each}}
+    </section>
+</section>
+
+{{else}}
+<a href="/login">You must login first to view this page</a>
+{{/if}}
