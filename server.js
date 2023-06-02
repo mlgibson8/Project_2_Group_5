@@ -9,7 +9,11 @@ const crypto = require('crypto');
 const app = express();
 const PORT = process.env.PORT || 3001;
 const secretValue = crypto.randomBytes(32).toString('hex');
+
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
+
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
 
 const hbs = exphbs.create({ helpers });
 
