@@ -19,7 +19,7 @@ async function loginFormHandler(event) {
     });
 // If the response is ok, redirect to the dashboard
     if (response.ok) {
-      document.location.replace('/dashboard');
+      document.location.replace('/homepage');
     } else
     // If the response is not ok, alert the user
     {
