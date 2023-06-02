@@ -12,7 +12,6 @@ const secretValue = crypto.randomBytes(32).toString('hex');
 
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
 
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 
 const hbs = exphbs.create({ helpers });
