@@ -2,11 +2,13 @@
     <h3>Explore</h3>
     <form id="search-form" class="d-flex" role="search">
         <input id="search-bar" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button id="search-btn" class="btn btn-outline-success" type="submit">Search</button>
+        <button id="search-btn" class="btn btn-outline-success" type="button">Search</button>
     </form>
     <div>
         {{#each movies as |movie|}}
         <!--    {{> movie-details}} -->
         {{/each}}
     </div>
-</section>
+    </section>
+
+    <script src="/js/search.js"></script>
