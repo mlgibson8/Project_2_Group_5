@@ -33,7 +33,7 @@ Post.hasMany(Comment, {
   foreignKey: 'post_id',
 });
 
-Movie.hasMany(Post, {
-  foreignKey: 'movie_id',
-});
-module.exports = { User, Post, Comment, Movie };
+// Movie.hasMany(Post, {
+//   foreignKey: 'movie_id',
+// });
+module.exports = { User, Post, Comment };
