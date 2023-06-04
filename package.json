@@ -6,20 +6,17 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node server.js",
-        "seed": "node seeds/index.js"
+        "seed": "node seeds/index.js", 
+        "dev": "nodemon server.js"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "bcrypt": "^5.0.1",
-
+        "bcrypt": "^5.1.0",
         "connect-session-sequelize": "^7.1.7",
-        "dotenv": "^1.0.0",
-
         "crypto": "^1.0.1",
         "dotenv": "^8.2.0",
-
         "express": "^4.17.1",
         "express-handlebars": "^5.3.2",
         "express-session": "^1.17.3",
