@@ -4,12 +4,13 @@ const { User } = require('../../models');
 // GET all users
 router.get('/', async (req, res) => {
     await User.findAll({
-        attributes: {exclude: ['password']}
+        attributes: { exclude: ['password'] }
     })
-    .then((User) => res.json(User))
-    .catch((err) => {
-        res.json(err);})
-    });
+        .then((User) => res.json(User))
+        .catch((err) => {
+            res.json(err);
+        })
+});
 
 // GET one user
 router.get('/:id', async (req, res) => {
@@ -17,12 +18,14 @@ router.get('/:id', async (req, res) => {
         where: {
             id: req.params.id
         },
-        attributes: {exclude: ['password']},
-        include: ['id', 'username', 'email', 'password']})
-    .then((User) => res.json(User))
-    .catch((err) => {
-        res.json(err);})
-    });
+        attributes: { exclude: ['password'] },
+        include: ['id', 'username', 'email', 'password']
+    })
+        .then((User) => res.json(User))
+        .catch((err) => {
+            res.json(err);
+        })
+});
 
 // Create new user
 router.post('/', async (req, res) => {
@@ -32,7 +35,7 @@ router.post('/', async (req, res) => {
             email: req.body.email,
             password: req.body.password,
         });
-        
+
         req.session.save(() => {
             req.session.loggedIn = true;
 
@@ -58,21 +61,21 @@ router.post('/login', async (req, res) => {
                 .json({ message: 'Incorrect email or password.' });
             return;
         }
-    const validPassword = await dbUserData.checkPassword(req.body.password);
-    if (!validPassword) {
-        res
-            .status(400)
-            .json({ message: 'Incorrect email or password.' });
-        return;
-    }
-    req.session.save(() => {
-    req.session.loggedIn = true;
-    console.log('🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie', req.session.cookie);
-    res.status(200).json({ 
-        user: dbUserData, 
-        message: 'You are logged in.' 
-    });
-    });
+        const validPassword = await dbUserData.checkPassword(req.body.password);
+        if (!validPassword) {
+            res
+                .status(400)
+                .json({ message: 'Incorrect email or password.' });
+            return;
+        }
+        req.session.save(() => {
+            req.session.user_id = dbUserData.id;
+            req.session.loggedIn = true;
+            console.log('🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie', req.session.cookie);
+            res
+                .status(200)
+                .json({ user: dbUserData, message: 'You are logged in.' });
+        });
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -86,7 +89,7 @@ router.post('/logout', (req, res) => {
             res.status(204).end();
         });
     } else {
-      res.status(404).end();
+        res.status(404).end();
     }
 });
 

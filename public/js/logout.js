@@ -5,12 +5,13 @@ async function logout() {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
   });
-// If the response is ok, redirect to the homepage
+  // If the response is ok, redirect to the homepage
   if (response.ok) {
     document.location.replace('/');
   } else {  
   // If the response is not ok, alert the user
-    alert('Failed to log out.')
+  {
+    alert(response.statusText);
   }
 }
 
