@@ -3,7 +3,10 @@
 <h2>{{movie.description}}</h2>
 <img src="{{movie.photo}}">
 
-<button class="save-btn" data-title="{{movie.title}}" data-description="{{movie.description}}" data-photo="{{movie.photo}}">Save Movie</button>
+<a href="/movie/{{movie.id}}">
+    <button class="save-btn" data-title="{{movie.title}}" data-description="{{movie.description}}" data-photo="{{movie.photo}}">See More</button>
+</a>
+
 <br>
 
 {{/each}}

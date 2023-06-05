@@ -4,9 +4,9 @@ const loginStatusEl = document.getElementById('signin-status');
 // Function to handle the login form submission
 async function loginFormHandler(event) {
   event.preventDefault();
- // Get the email and password from the form
-  const email = document.getElementById('email-login').value;
-  const password = document.getElementById('password-login').value;
+  // Get the email and password from the form
+  const email = document.getElementById('login-email').value;
+  const password = document.getElementById('login-pass').value;
   // If the email and password are not empty, submit the form
   if (email && password) {
     const response = await fetch('/api/users/login', {
@@ -17,14 +17,14 @@ async function loginFormHandler(event) {
       }),
       headers: { 'Content-Type': 'application/json' },
     });
-// If the response is ok, redirect to the dashboard
+    // If the response is ok, redirect to the dashboard
     if (response.ok) {
-      document.location.replace('/homepage');
+      document.location.replace('/');
     } else
     // If the response is not ok, alert the user
     {
       loginStatusEl.textContent = 'Email or Password is incorrect';
-      
+
     }
   }
 }
