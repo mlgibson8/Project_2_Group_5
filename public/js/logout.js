@@ -8,11 +8,12 @@ async function logout() {
   // If the response is ok, redirect to the homepage
   if (response.ok) {
     document.location.replace('/');
-  } else {  
-  // If the response is not ok, alert the user
-  {
-    alert(response.statusText);
+  } else {   
+    // If the response is not ok, alert the user
+    {
+      alert(response.statusText);
+    }
   }
-}
+};
 
 logoutBtn.addEventListener('click', logout);

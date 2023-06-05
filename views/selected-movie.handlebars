@@ -23,7 +23,8 @@
             <h4 class="text-center">Posts</h4>
             <button id="show-add-post" type="button" class="btn btn-primary" onclick="toggleAddPost()">Add Post</button>
             <div id="add-post-section" style="display: none;">
-                <form id="add-post-form" class="form">
+                <form id="add-post-form" class="form" style="padding: 10px;">
+                    <p id="add-post-status" style="color: red;"></p>
                     <div class="mb-3">
                         <label for="add-post-title" class="form-label">Title</label>
                         <input id="add-post-title" type="text" class="form-control">
@@ -38,7 +39,7 @@
             <div id="list-post-section">
             {{#each movie.posts as |post|}}
             {{> post-details}}
-            {{/each}}   
+            {{/each}}
             </div>
         </div>
     </div>
@@ -51,11 +52,11 @@
         var addPostSection = document.getElementById("add-post-section");
         var showAddPost = document.getElementById("show-add-post");
         if (addPostSection.style.display === "none") {
-        addPostSection.style.display = "block";
-        showAddPost.textContent = "Cancel";
+            addPostSection.style.display = "block";
+            showAddPost.textContent = "Cancel";
         } else {
-        addPostSection.style.display = "none";
-        showAddPost.textContent = "Add Post";
+            addPostSection.style.display = "none";
+            showAddPost.textContent = "Add Post";
         }
     };
 </script>

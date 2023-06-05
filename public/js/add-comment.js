@@ -1,4 +1,4 @@
-const addCommentForm = document.getElementById('comment-form');
+const addCommentForm = document.getElementById('add-comment-form');
 // Function to add a comment to the database
 async function addComment(newComment, postId) {
   const response = await fetch(`/api/comments/${postId}`, {
@@ -26,12 +26,12 @@ const newCommentHandler = (event) => {
   event.preventDefault();
 
 // Get the comment text from the form
-  const comment_text = document.getElementById('comment-field').value;
+  const commentText = document.getElementById('cadd-comment-text').value;
   const commentStatusEl = document.getElementById('comment-status');
 // If the comment is less than 5 characters, alert the user
-  if (comment_text.length <= 4) {
+  if (commentText.length <= 4) {
         commentStatusEl.textContent =
-      'comment must be at least 5 characters long';
+      'Comment must be at least 5 characters long';
       } else 
       // sumbit the comment to the database
       {
@@ -40,7 +40,7 @@ const newCommentHandler = (event) => {
      const postId = window.location.pathname.split('/')[2];
     // After 1 second, add the comment to the database
     setTimeout(() => {
-      addComment(comment_text, postId);
+      addComment(commentText, postId);
     }, 750);
   }
 };
