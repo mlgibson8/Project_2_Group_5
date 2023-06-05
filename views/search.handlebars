@@ -1,15 +1,26 @@
-{{#each data as |movie|}}
-<h1>{{movie.title}}</h1>
-<h2>{{movie.description}}</h2>
-<img src="{{movie.photo}}">
-
-<a href="/movie/{{movie.id}}">
-    <button class="save-btn" data-title="{{movie.title}}" data-description="{{movie.description}}" data-photo="{{movie.photo}}">See More</button>
-</a>
-
-<br>
-
-{{/each}}
+<section class="row">
+    {{#each data as |movie|}}
+    <div class="card" style="width: 18rem; margin: 10px;">
+        <img src="{{movie.photo}}" class="card-img-top" alt="{{movie.title}}">
+        <div class="card-body">
+            <h4 class="card-title">{{movie.title}}</h4>
+            <a href="/movie/{{movie.id}}" class="btn btn-primary">
+                <button class="save-btn"
+                    style="background: none;
+                        color: inherit;
+                        border: none;
+                        padding: 0;
+                        font: inherit;
+                        outline: inherit;" 
+                    data-title="{{movie.title}}" 
+                    data-description="{{movie.description}}" 
+                    data-photo="{{movie.photo}}">See More</button>
+            </a>
+        </div>
+    </div>
+    <br>
+    {{/each}}
+</section>
 
 {{!-- <h1>{{data.0.title}}</h1>
 <h2>{{data.0.description}}</h2>

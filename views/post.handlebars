@@ -1,0 +1,35 @@
+<section class="card">
+  <div class="card-body">
+    <h3 class="post-title">{{post.title}}</h3>
+    <p>{{post.description}}</p>
+    <button id="view-comments-btn" class="btn btn-primary">View Comments</button>
+    <!-- If the user is logged in, render the gallery content -->
+    <div id="comments-display" class="flex-row justify-center">
+    </div>
+  </div>
+      {{#if loggedIn}}    
+    <div class="card">
+        <button id="show-add-comment" class="btn btn-primary justify-content-end">Add Post</button>
+        <div id="add-comment-section" class="card-body">
+            <form id="add-comment-form" class="form">
+                <button id="hide-add-comment" class="btn btn-primary justify-content-end">Cancel</button>
+                <div class="mb-3">
+                    <label for="add-comment-text" class="form-label">Comment</label>
+                    <input id="add-comment-text" type="text" class="form-control">
+                </div>
+                <button id="add-comment-submit-btn" class="btn btn-primary" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+    <h4>Comments</h4>
+        {{#each post.comments as |comment|}}
+        {{> comment-details}}
+        {{/each}}
+    </div>
+    {{else}}
+    <a href="/login">You must login first to view this content.</a>
+    {{/if}}
+</section>
+
+<script href="/js/add-comment.js"></script>

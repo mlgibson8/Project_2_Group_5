@@ -5,8 +5,8 @@ const loginStatusEl = document.getElementById('login-status');
 async function loginFormHandler(event) {
   event.preventDefault();
   // Get the email and password from the form
-  const email = document.getElementById('login-email').value;
-  const password = document.getElementById('login-pass').value;
+  const email = document.getElementById('email-login').value;
+  const password = document.getElementById('password-login').value;
   // If the email and password are not empty, submit the form
   if (email && password) {
     const response = await fetch('/api/users/login', {
