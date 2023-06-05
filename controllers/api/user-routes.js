@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+// GET all users
 router.get('/', async (req, res) => {
     await User.findAll({
         attributes: {exclude: ['password']}
@@ -10,6 +11,7 @@ router.get('/', async (req, res) => {
         res.json(err);})
     });
 
+// GET one user
 router.get('/:id', async (req, res) => {
     await User.findOne({
         where: {
@@ -22,6 +24,7 @@ router.get('/:id', async (req, res) => {
         res.json(err);})
     });
 
+// Create new user
 router.post('/', async (req, res) => {
     try {
         const dbUserData = await User.create({
@@ -41,6 +44,7 @@ router.post('/', async (req, res) => {
     }
 });
 
+// Login existing user
 router.post('/login', async (req, res) => {
     try {
         const dbUserData = await User.findOne({
@@ -64,16 +68,18 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
     req.session.loggedIn = true;
     console.log('🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie', req.session.cookie);
-        res
-            .status(200)
-            .json({ user: dbUserData, message: 'You are logged in.' });
+    res.status(200).json({ 
+        user: dbUserData, 
+        message: 'You are logged in.' 
+    });
     });
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
     }
-  });
+});
 
+// Logout
 router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {
@@ -85,4 +91,3 @@ router.post('/logout', (req, res) => {
 });
 
 module.exports = router;
-            

@@ -1,0 +1,13 @@
+{{#if loggedIn}}
+<div class="container video-page">
+    <h3 class="display-1">{{movie.title}}</h3>
+    <div class="container">
+        <div class="row">
+            <div class="bg-primary video-play embed-responsive embed-responsive-8by4"></div>
+        </div>
+    </div>
+</div>
+
+{{else}}
+<a href="/login">You must login first to view this page</a>
+{{/if}}

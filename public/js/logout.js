@@ -1,17 +1,16 @@
-const logoutBtn = document.getElementById('logout');
+const logoutBtn = document.getElementById('logout-btn');
 // Function to handle the logout
 async function logout() {
   const response = await fetch('/api/users/logout', {
-    method: 'post',
+    method: 'POST',
     headers: { 'Content-Type': 'application/json' },
   });
 // If the response is ok, redirect to the homepage
   if (response.ok) {
     document.location.replace('/');
-  } else
+  } else {  
   // If the response is not ok, alert the user
-   {
-    alert(response.statusText);
+    alert('Failed to log out.')
   }
 }
 
