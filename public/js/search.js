@@ -3,7 +3,7 @@ const searchInputEl = document.getElementById('search-bar')
 searchBtnEl.addEventListener('click', (e) => {
     let validSearch = searchInputEl.value.replace(' ', '-')
     console.log(validSearch)
-    window.location.href = `/api/search/${validSearch}`
+    window.location.href = `/search/${validSearch}`
     console.log(searchInputEl.value)
 })
 searchInputEl.addEventListener('change', (e) => {
