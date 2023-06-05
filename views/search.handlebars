@@ -1,11 +1,11 @@
-<section class="row">
+<section class="row justify-content-center">
     {{#each data as |movie|}}
     <div class="card" style="width: 18rem; margin: 10px;">
         <img src="{{movie.photo}}" class="card-img-top" alt="{{movie.title}}">
         <div class="card-body">
             <h4 class="card-title">{{movie.title}}</h4>
             <a href="/movie/{{movie.id}}" class="btn btn-primary">
-                <button class="save-btn"
+                <button id="movie-save-btn"
                     style="background: none;
                         color: inherit;
                         border: none;

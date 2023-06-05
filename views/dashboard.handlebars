@@ -1,19 +1,19 @@
-<section class="container-fluid">
+<section class="container-fluid" style="margin-top: 20px;">
+    {{#if loggedIn}}
     <div class="card">
         <div class="card-body">
             <h1>{{user.username}}</h1>
         </div>
-    </div>
-    {{#if loggedIn}}
-    <div class="container">
-        <h4>Posts</h4>
-        <div>
-        {{#each user.posts as |post|}}
-        {{> post-details}}
-        {{/each}}
+        <div class="container">
+            <h4>Posts</h4>
+            <div>
+            {{#each user.posts as |post|}}
+            {{> post-details}}
+            {{/each}}
+            </div>
         </div>
     </div>
     {{else}}
-    <a href="/login">You must login first to view this content.</a>
+    <p class="text-center">Login to join the conversation!</p>
     {{/if}}
 </section>

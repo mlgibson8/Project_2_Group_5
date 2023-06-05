@@ -1,5 +1,5 @@
 console.log("hello")
-const allButtons = document.querySelectorAll(".save-btn")
+const allButtons = document.getElementById("movie-save-btn")
 
 allButtons.forEach(btn => {
     btn.addEventListener("click", function (event) {
