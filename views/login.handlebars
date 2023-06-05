@@ -1,35 +1,39 @@
 <section class="row" style="padding: 20px;">
-    <div id="login-form" class="card col" style="margin: 10px;">
+    <!--Login Form-->
+    <div class="card col" style="margin: 10px;">
         <div class="card-body">
             <h3 class="text-center">Login</h3>
-            <form>
+            <p class="text-center" id="login-status" style="color: red;"></p>
+            <form class="form" id="login-form">
                 <div class="mb-3">
-                    <label for="login-email" class="form-label">Email</label>
-                    <input id="login-email" type="text" class="form-control">
+                    <label for="email-login" class="form-label">Email</label>
+                    <input id="email-login" type="text" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <label for="login-pass" class="form-label">Password</label>
-                    <input id="login-pass" type="password" class="form-control">
+                    <label for="password-login" class="form-label">Password</label>
+                    <input id="password-login" type="password" class="form-control">
                 </div>
                 <button id="login-submit-btn" type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>
-    <div id="signup-form" class="card col" style="margin: 10px;">
+    <!--Sign Up Form-->
+    <div class="card col" style="margin: 10px;">
         <div class="card-body">
             <h3 class="text-center">Sign Up</h3>
-            <form>
+            <p class="text-center" id="signup-status" style="color: red;"></p>
+            <form class="form" id="signup-form">
                 <div class="mb-3">
-                    <label for="signup-username" class="form-label">Username</label>
-                    <input id="signup-username" type="text" class="form-control">
+                    <label for="username-signup" class="form-label">Username</label>
+                    <input id="username-signup" type="text" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <label for="signup-email" class="form-label">Email</label>
-                    <input id="signup-email" type="text" class="form-control">
+                    <label for="email-signup" class="form-label">Email</label>
+                    <input id="email-signup" type="text" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <label for="signup-pass" class="form-label">Password</label>
-                    <input id="signup-pass" type="password" class="form-control">
+                    <label for="password-signup" class="form-label">Password</label>
+                    <input id="password-signup" type="password" class="form-control">
                 </div>
                 <button id="signup-submit-btn" type="submit" class="btn btn-primary">Submit</button>
             </form>
@@ -37,4 +41,5 @@
     </div>
 </section>
 
-<script src="../public/js/login.js"></script>
+<script src="./js/login.js"></script>
+<script src="./js/signup.js"></script>
