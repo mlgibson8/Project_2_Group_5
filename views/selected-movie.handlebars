@@ -1,5 +1,61 @@
-<h1>Selected Movie</h1>
+<section class="container" style="margin: 20px;">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <img src="{{data.photo}}" class="col" style="max-width: 25%; height: auto;">
+                <div class="col">
+                    <h1 class="text-center">{{data.title}}</h1>
+                    <p style="font-size: 18pt;">{{data.description}}</p>
+                    <div class="container video-page">
+                        <h3>{{data.title}} Trailer</h3>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="bg-primary video-play embed-responsive embed-responsive-8by4"></div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="text-center">Posts</h4>
+            <button id="show-add-post" type="button" class="btn btn-primary" onclick="toggleAddPost()">Add Post</button>
+            <div id="add-post-section" style="display: none;">
+                <form id="add-post-form" class="form">
+                    <div class="mb-3">
+                        <label for="add-post-title" class="form-label">Title</label>
+                        <input id="add-post-title" type="text" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="add-post-description" class="form-label">Description</label>
+                        <input id="add-post-description" type="text" class="form-control">
+                    </div>
+                    <button id="add-post-submit-btn" class="btn btn-primary" type="submit">Submit</button>
+                </form>
+            </div>
+            <div id="list-post-section">
+            {{#each movie.posts as |post|}}
+            {{> post-details}}
+            {{/each}}   
+            </div>
+        </div>
+    </div>
+</section>
 
-<h1>{{data.title}}</h1>
-<h2>{{data.description}}</h2>
-<img src="{{data.photo}}">
+<script href="/js/movie.js"></script>
+<script href="/js/add-post.js"></script>
+<script>
+    function toggleAddPost() {
+        var addPostSection = document.getElementById("add-post-section");
+        var showAddPost = document.getElementById("show-add-post");
+        if (addPostSection.style.display === "none") {
+        addPostSection.style.display = "block";
+        showAddPost.textContent = "Cancel";
+        } else {
+        addPostSection.style.display = "none";
+        showAddPost.textContent = "Add Post";
+        }
+    };
+</script>

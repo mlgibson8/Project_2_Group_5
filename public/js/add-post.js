@@ -1,14 +1,14 @@
-onst addPostForm = document.getElementById('addPost-form');
+const addPostForm = document.getElementById('add-post-form');
 // Function to add a post to the database
 async function newPostHandler(event) {
   event.preventDefault();
   // Get the post title and description from the form
-  const post_title = document.getElementById('add-post-title').value;
-  const post_desc = document.getElementById('add-post-desc').value;
+  const postTitle = document.getElementById('add-post-title').value;
+  const postDesc = document.getElementById('add-post-description').value;
   // Get the status element
-  const addPostStatusEl = document.getElementById('addpost-status');
+  const addPostStatusEl = document.getElementById('add-post-status');
   // If the post title or description is less than 5 characters, alert the user
-  if (post_title.length <= 4 || post_desc.length <= 4) {
+  if (postTitle.length <= 4 || postDesc.length <= 4) {
     // If any add post input value is under 4 character length, notify the user and restrict submission
     addPostStatusEl.textContent =
       'Please make valid entries for all fields (must be at least 5 characters long)';   
@@ -17,8 +17,8 @@ async function newPostHandler(event) {
     const response = await fetch(`/api/posts`, {
       method: 'POST',
       body: JSON.stringify({
-        post_title,
-        post_desc,
+        postTitle,
+        postDesc,
       }),
       headers: {
         'Content-Type': 'application/json',
