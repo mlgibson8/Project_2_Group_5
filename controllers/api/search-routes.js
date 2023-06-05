@@ -25,9 +25,9 @@ router.get('/:keyword', (req, res) => {
                     photo: "https://image.tmdb.org/t/p/w500" + item.poster_path
                 }
             })
+            console.log(simpleData)
 
-
-            res.json({
+            res.render("search", {
                 message: "Hello!",
                 data: simpleData
             })

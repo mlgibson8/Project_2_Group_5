@@ -1,0 +1,14 @@
+{{#each data as |movie|}}
+<h1>{{movie.title}}</h1>
+<h2>{{movie.description}}</h2>
+<img src="{{movie.photo}}">
+
+<button class="save-btn" data-title="{{movie.title}}" data-description="{{movie.description}}" data-photo="{{movie.photo}}">Save Movie</button>
+<br>
+
+{{/each}}
+
+{{!-- <h1>{{data.0.title}}</h1>
+<h2>{{data.0.description}}</h2>
+<img src="{{data.0.photo}}"> --}}
+<script src="/js/add-movie.js"></script>
