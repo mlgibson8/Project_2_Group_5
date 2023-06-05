@@ -5,7 +5,6 @@ const router = require('express').Router();
 
 router.get('/:keyword', (req, res) => {
     console.log(req.params.keyword)
-
     // fetch call to moviedb
     const options = {
         method: 'GET',
