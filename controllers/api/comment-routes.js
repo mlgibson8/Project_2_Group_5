@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { Comment, User} = require('../../models');
+const { Comment, User } = require('../../models');
 
 router.get('/', async (req, res) => {
-     await Comments.findAll({
+     await Comment.findAll({
         attributes: ['id', 'text'],
         include: [
             {model : User,
@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
             });
 
 router.get('/:id', async (req, res) => {
-    await Comments.findOne({
+    await Comment.findOne({
         where: {
             id: req.params.id
         },
@@ -23,7 +23,7 @@ router.get('/:id', async (req, res) => {
             });
             
 router.post('/', async (req, res) => {
-    await Comments.create({
+    await Comment.create({
         comment_text: req.body.comment_text,
         user_id: req.body.user_id,
         post_id: req.body.post_id

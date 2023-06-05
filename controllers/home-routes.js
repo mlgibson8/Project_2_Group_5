@@ -1,11 +1,13 @@
 const router = require('express').Router();
 
+// Renders homepage
 router.get('/', async (req, res) => {
     res.render('homepage', {
         loggedIn: req.session.loggedIn
     });
 });
 
+// Fetches movie data
 router.get('/search/:keyword', (req, res) => {
     console.log(req.params.keyword)
     // fetch call to moviedb
@@ -38,8 +40,16 @@ router.get('/search/:keyword', (req, res) => {
             })
         })
         .catch(err => console.error(err));
+});
 
-})
+// Renders the login page 
+router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
+    res.render('login')
+});
 
 router.get("/movie/:id", (req, res) => {
     const options = {
