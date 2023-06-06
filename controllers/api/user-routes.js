@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 });
 
 // GET one user
-router.get('/:id', async (req, res) => {
+router.get('/user/:id', async (req, res) => {
     try {
         const dbUserData = await User.findByPk(req.params.id, {
             attributes: { exclude: ['password'] },
@@ -28,8 +28,7 @@ router.get('/:id', async (req, res) => {
         const user = dbUserData.get({ plain: true });
     
         res.render('user', {
-          ...user,
-          loggedIn: req.session.loggedIn
+          ...user
         });
       } catch (err) {
         res.status(500).json(err);

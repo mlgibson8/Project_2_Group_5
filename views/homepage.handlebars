@@ -11,7 +11,7 @@
         <h3>Most Recent Posts</h3>
         {{#if loggedIn}}
             {{#if posts.length}}
-                {{#each posts as |post| }}
+                {{#each posts as |post|}}
                 {{> post-details}}
                 {{/each}}
             {{else}}
