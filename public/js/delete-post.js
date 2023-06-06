@@ -17,3 +17,13 @@ posts.forEach((post) => {
     deletePost(post.dataset.postId);
   });
 });
+
+// Add the event listener to the delete button
+const deletePostBtn = document.getElementById('delete-post-btn');
+deletePostBtn.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    let commentId = btn.dataset.commentId;
+    deleteComment(commentId);
+  });
+});
+

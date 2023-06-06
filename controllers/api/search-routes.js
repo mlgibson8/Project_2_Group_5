@@ -20,6 +20,7 @@ router.get('/:keyword', (req, res) => {
         .then(response => {
             const simpleData = response.results.map(item => {
                 return {
+                    id: item.id,
                     title: item.original_title,
                     description: item.overview,
                     photo: "https://image.tmdb.org/t/p/w500" + item.poster_path

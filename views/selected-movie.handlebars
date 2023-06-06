@@ -8,45 +8,49 @@
                     <p style="font-size: 18pt;">{{data.description}}</p>
                     <div class="container video-page">
                         <h3>{{data.title}} Trailer</h3>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="bg-primary video-play embed-responsive embed-responsive-8by4"></div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="bg-primary video-play embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item"
+                                        src="https://www.youtube.com/embed/{{data.trailerId}}" allowfullscreen></iframe>
                                 </div>
+
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="card">
-        <div class="card-body">
-            <h4 class="text-center">Posts</h4>
-            <button id="show-add-post" type="button" class="btn btn-primary" onclick="toggleAddPost()">Add Post</button>
-            <div id="add-post-section" style="display: none;">
-                <form id="add-post-form" class="form" style="padding: 10px;">
-                    <p id="add-post-status" style="color: red;"></p>
-                    <div class="mb-3">
-                        <label for="add-post-title" class="form-label">Title</label>
-                        <input id="add-post-title" type="text" class="form-control">
-                    </div>
-                    <div class="mb-3">
-                        <label for="add-post-description" class="form-label">Description</label>
-                        <input id="add-post-description" type="text" class="form-control">
-                    </div>
-                    <button id="add-post-submit-btn" class="btn btn-primary" type="submit">Submit</button>
-                </form>
-            </div>
-            <div id="list-post-section">
-            {{#each movie.posts as |post|}}
-            {{> post-details}}
-            {{/each}}
+        <div class="card">
+            <div class="card-body">
+                <h4 class="text-center">Posts</h4>
+                <button id="show-add-post" type="button" class="btn btn-primary" onclick="toggleAddPost()">Add
+                    Post</button>
+                <div id="add-post-section" style="display: none;">
+                    <form id="add-post-form" class="form" style="padding: 10px;">
+                        <p id="add-post-status" style="color: red;"></p>
+                        <div class="mb-3">
+                            <label for="add-post-title" class="form-label">Title</label>
+                            <input id="add-post-title" type="text" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="add-post-description" class="form-label">Description</label>
+                            <input id="add-post-description" type="text" class="form-control">
+                        </div>
+                        <button id="add-post-submit-btn" class="btn btn-primary" type="submit">Submit</button>
+                    </form>
+                </div>
+                <div id="list-post-section">
+                    {{#each movie.posts as |post|}}
+                    {{> post-details}}
+                    {{/each}}
+                </div>
             </div>
         </div>
-    </div>
 </section>
 
-<script href="/js/movie.js"></script>
-<script href="/js/add-post.js"></script>
+<script src="/public/movie.js"></script>
+<script src="/js/add-post.js"></script>
 <script>
     function toggleAddPost() {
         var addPostSection = document.getElementById("add-post-section");

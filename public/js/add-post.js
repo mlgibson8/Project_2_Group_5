@@ -19,6 +19,8 @@ async function newPostHandler(event) {
       body: JSON.stringify({
         postTitle,
         postDesc,
+        movie_id,
+        user_id
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -33,7 +35,7 @@ async function newPostHandler(event) {
       }, 750);
     } else {
       // If the response is not ok, alert the user
-      alert(response.statusText);
+      addPostStatusEl.textContent = 'Failed to upload post. Please try again'
     }
   }
 }

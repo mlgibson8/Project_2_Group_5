@@ -15,8 +15,8 @@ async function deleteComment(comment_id) {
     }
   }
   // Add the event listener to the delete button
-  const deleteBtn = document.querySelectorAll('.delete-comment');
-  deleteBtn.forEach((btn) => {
+  const deleteCommentBtn = document.getElementById('delete-comment-btn');
+  deleteCommentBtn.forEach((btn) => {
     btn.addEventListener('click', () => {
       let commentId = btn.dataset.commentId;
       deleteComment(commentId);
