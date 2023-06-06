@@ -1,8 +1,8 @@
-<section class="container" style="margin: 20px;">
+<section class="container position-relative" style="margin: 20px;">
     <div class="card">
         <div class="card-body">
             <div class="row">
-                <img src="{{data.photo}}" class="col" style="max-width: 25%; height: auto;">
+                <img src="{{data.photo}}" class="col" style="max-width: 25%; height: 25%;">
                 <div class="col">
                     <h1 class="text-center">{{data.title}}</h1>
                     <p style="font-size: 18pt;">{{data.description}}</p>
@@ -23,9 +23,10 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <h4 class="text-center">Posts</h4>
+                <h4 class="text-center">Create a Post</h4>
+                <p class="text-center">Love it? Hate it? Let everyone know!<br>Click on "Add Post" to write your own review of this movie.</p>
                 {{#if loggedIn}}
-                <button id="show-add-post" type="button" class="btn btn-primary" onclick="toggleAddPost()">Add
+                <button id="show-add-post" type="button" class="btn btn-primary justify-content-center" onclick="toggleAddPost()">Add
                     Post</button>
                 <div id="add-post-section" style="display: none;">
                     <form id="add-post-form" class="form" style="padding: 10px;">

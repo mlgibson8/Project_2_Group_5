@@ -9,6 +9,29 @@ router.get('/', async (req, res) => {
     });
 });
 
+// // Gets all posts with user data
+// router.get('/', async (req, res) => {
+//     try {
+//       const dbPostData = await Post.findAll({
+//         include: [
+//           {
+//             model: User,
+//             attributes: ['id', 'username'],
+//           },
+//         ],
+//       });
+//       // Serialize data so the template can read it
+//       const posts = dbPostData.map((post) => post.get({ plain: true }));
+//       // Pass serialized data and session flag into template
+//       res.render('homepage', { 
+//         posts,
+//         loggedIn: req.sesssion.loggedIn
+//       });
+//     } catch (err) {
+//       res.status(500).json(err);
+//     }
+//   });
+
 // Return all posts associated with the user
 router.get('/dashboard', withAuth, async (req, res) => {
     // Add a new route here that returns all posts associated with user, you can easily extract this via 'req.session.user_id'

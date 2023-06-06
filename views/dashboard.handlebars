@@ -1,85 +1,37 @@
-<section class="container">
+<section class="container position-relative" style="margin: 20px;">
   <div class="row">
     <div class="col-auto">
       <h2>Welcome, {{username}}!</h2>
     </div>
-  </div class="card">
+  </div class="container">
     {{#if posts.length}}
-    <div class="col-md-6 user-post-list">
-      <h3>My Posts</h3>
-      {{#each posts as |post|}}
+    <div class="card user-post-list">
       <div class="card-body">
-        <div class="col-md-8">
-          <h4><a href="/post/{{post.id}}">{{post.title}}</a></h4>
+        <h3 class="text-center" style="padding: 10px;">My Posts</h3>
+        <p id="post-status" style="color: red;"></p>
+        {{#each posts as |post|}}
+        <div class="card w-100 mb-3">
+          <div class="card-body">
+            <h5 class="card-title"><a href="/post/{{post.id}}">{{post.title}}</a></h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">Movie: <a href="/movie/{{post.movie_id}}">{{post.movie_title}}</a></h6>
+            <p class="card-text">{{post.description}}</p>
+            <button id="delete-post-btn" class="btn btn-sm btn-danger" data-id="{{post.id}}">Delete</a>
+          </div>
         </div>
-        <div class="col-md-4">
-          <button id="edit-post-btn" class="btn btn-sm btn-primary" data-id="{{post.id}}">Edit</button>
-          <p id="new-post-status" style="color: red;"></p>
-          <!--Edit Post Form Start-->
-            <div id="edit-post-section" class="card" style="display: none;">
-              <div class="card-body">
-                <form id="edit-post-form" class="form" style="padding: 10px;">
-                  <p id="edit-post-status" style="color: red;"></p>
-                  <div class="mb-3">
-                      <label for="edit-post-title" class="form-label">Title</label>
-                      <input id="edit-post-title" type="text" class="form-control">
-                  </div>
-                  <div class="mb-3">
-                      <label for="edit-post-description" class="form-label">Description</label>
-                      <input id="edit-post-description" type="text" class="form-control">
-                  </div>
-                  <button id="edit-post-submit-btn" class="btn btn-primary" type="submit">Submit</button>
-                </form>
-              </div>
-            </div>
-          <!--Edit Post Form End-->
-          <button id="delete-post-btn" class="btn btn-sm btn-danger" data-id="{{post.id}}">Delete</button>
-        </div>
+        {{/each}}    
+        {{else}}
+        <p>No posts yet. Search for a movie to create a post.</p>
+        {{/if}}
       </div>
-      {{/each}}    
-      {{else}}
-      <p>No posts yet. Search for a movie to create a post.</p>
-      {{/if}}
     </div>
-    {{#if comments.length}}
-    <div class="col-md-6 user-comment-list">
-      <h3>My Comments</h3>
-      {{#each comments as |comment|}}
-      <div class="card-body">
-        <div class="col-md-8">
-          <h4><a href="/post/{{comment.id}}">{{comment.comment_text}}</a></h4>
-        </div>
-        <div class="col-md-4">
-          <button id="edit-comment-btn" class="btn btn-sm btn-primary" data-id="{{comment.id}}">Edit</button>
-          <p id="new-comment-status" style="color: red;"></p>
-          <!--Edit Comment Form Start-->
-            <div id="edit-comment-section" class="card" style="display: none;">
-              <div class="card-body">
-                <form id="edit-comment-form" class="form" style="padding: 10px;">
-                  <p id="edit-comment-status" style="color: red;"></p>
-                  <div class="mb-3">
-                      <label for="edit-comment-text" class="form-label">Text</label>
-                      <input id="edit-comment-text" type="text" class="form-control">
-                  </div>
-                  <button id="edit-comment-submit-btn" class="btn btn-primary" type="submit">Submit</button>
-                </form>
-              </div>
-            </div>
-          <!--Edit Comment Form End-->
-          <button id="delete-comment-btn" class="btn btn-sm btn-danger" data-id="{{post.id}}">Delete</button>
-        </div>
-      </div>
-      {{/each}}    
-      {{/if}}
-    </div>  
   </div>
 </section>
 
-<script src="/js/edit-post.js"></script>
+{{!-- <script src="/js/edit-post.js"></script> --}}
 <script src="/js/delete-post.js"></script>
-<script src="/js/edit-comment.js"></script>
-<script src="/js/delete-comment.js"></script>
-<script>
+{{!-- <script src="/js/edit-comment.js"></script>
+<script src="/js/delete-comment.js"></script> --}}
+{{!-- <script>
     function toggleEditPost() {
         var editPostSection = document.getElementById("edit-post-section");
         var showEditPost = document.getElementById("edit-post-btn");
@@ -103,4 +55,4 @@
             showEditComment.textContent = "Edit";
         }
     };
-</script>
+</script> --}}
