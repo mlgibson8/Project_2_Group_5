@@ -24,6 +24,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="text-center">Posts</h4>
+                {{#if loggedIn}}
                 <button id="show-add-post" type="button" class="btn btn-primary" onclick="toggleAddPost()">Add
                     Post</button>
                 <div id="add-post-section" style="display: none;">
@@ -37,6 +38,10 @@
                             <label for="add-post-description" class="form-label">Description</label>
                             <input id="add-post-description" type="text" class="form-control">
                         </div>
+                        <fieldset disabled class="mb-3 visually-hidden">
+                            <label for="post-movie-id" class="form-label"></label>
+                            <input id="post-movie-id" type="text" class="form-control" value="{{data.id}}">
+                        </fieldset>
                         <button id="add-post-submit-btn" class="btn btn-primary" type="submit">Submit</button>
                     </form>
                 </div>
@@ -45,6 +50,9 @@
                     {{> post-details}}
                     {{/each}}
                 </div>
+                {{else}}
+                <a href="/login">Please login first to access this content.</a>
+                {{/if}}
             </div>
         </div>
 </section>
