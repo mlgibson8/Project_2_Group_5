@@ -30,7 +30,9 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a id="home-btn" class="nav-link" href="/">Home</a>
+          {{#if loggedIn}}
           <a id="dashboard-btn" class="nav-link" href="/dashboard">Dashboard</a>
+          {{/if}}
           <a id="about-btn" class="nav-link" style="color: #adb5bd;" data-bs-toggle="modal"
             data-bs-target="#about-us-modal">About Us</a>
           <div class="modal fade" id="about-us-modal" tabindex="-1" aria-labelledby="aboutUsModal" aria-hidden="true">

@@ -1,8 +1,6 @@
-
 const Post = require('./Post');
 const User = require('./User');
 const Comment = require('./Comment');
- const Movie = require('./movie');
 const { post } = require('../controllers/api/search-routes');
 // create associations
 // sets up the foreign key relationship between the user and post tables with the foreign key constraint
@@ -34,15 +32,4 @@ Post.hasMany(Comment, {
   foreignKey: 'post_id',
 });
 
-Movie.hasMany(Post, {
-  foreignKey: 'post_id',
-  onDelete: 'SET NULL',
- });
-
-Post.belongsTo(Movie, {
-  foreignKey: 'movie_id',
-  onDelete: 'SET NULL',
-  });
-
-
-module.exports = { User, Post, Comment, Movie };
+module.exports = { User, Post, Comment };
