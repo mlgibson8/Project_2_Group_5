@@ -36,7 +36,8 @@ router.get('/search/:keyword', (req, res) => {
 
             res.render("search", {
                 message: "Hello!",
-                data: simpleData
+                data: simpleData,
+                loggedIn: req.session.loggedIn
             })
         })
         .catch(err => console.error(err));
@@ -76,7 +77,8 @@ router.get("/movie/:id", (req, res) => {
 
             res.render("selected-movie", {
                 // message: "Hello!",
-                data: simpleData
+                data: simpleData,
+                loggedIn: req.session.loggedIn
             })
         })
         .catch(err => console.error(err));
