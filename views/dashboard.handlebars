@@ -1,19 +1,27 @@
-<section class="container-fluid" style="margin-top: 20px;">
-    {{#if loggedIn}}
-    <div class="card">
-        <div class="card-body">
-            <h1>{{user.username}}</h1>
-        </div>
-        <div class="container">
-            <h4>Posts</h4>
-            <div>
-            {{#each user.posts as |post|}}
-            {{> post-details}}
-            {{/each}}
-            </div>
-        </div>
+<section class="container">
+  <div class="row">
+    <div class="col-auto">
+      <h2>Welcome, {{username}}!</h2>
     </div>
-    {{else}}
-    <p class="text-center">Login to join the conversation!</p>
-    {{/if}}
+  </div class="card">
+    {{#if posts.length}}
+    <div class="col-md-6 user-post-list">
+      <h3>My Posts</h3>
+      {{#each posts as |post|}}
+      <div class="card-body">
+        <div class="col-md-8">
+          <h4><a href="/post/{{post.id}}">{{post.title}}</a></h4>
+        </div>
+        <div class="col-md-4">
+          <button id="delete-post-btn" class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
+        </div>
+      </div>
+      {{/each}}    
+      {{else}}
+      <p>No posts yet. Search for a movie to create a post.</p>
+      {{/if}}
+    </div>
+  </div>
 </section>
+
+<script src="/js/delete-post.js"></script>
