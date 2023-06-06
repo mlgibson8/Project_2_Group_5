@@ -5,6 +5,7 @@ async function newPostHandler(event) {
   const title = document.getElementById('add-post-title').value.trim();
   const description = document.getElementById('add-post-description').value.trim();
   const movie_id = document.getElementById('post-movie-id').value.trim();
+  const movie_title = document.getElementById('post-movie-title').value.trim();
   // Get the status element
   const addPostStatusEl = document.getElementById('add-post-status');
   // If the post title or description is less than 5 characters, alert the user
@@ -19,7 +20,8 @@ async function newPostHandler(event) {
       body: JSON.stringify({
         title,
         description,
-        movie_id
+        movie_id,
+        movie_title
       }),
       headers: {
         'Content-Type': 'application/json',

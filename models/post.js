@@ -37,6 +37,10 @@ Post.init(
     movie_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+    },
+    movie_title: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   },  
   {
