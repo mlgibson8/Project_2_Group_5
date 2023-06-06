@@ -33,7 +33,7 @@ async function newPostHandler(event) {
       }, 750);
     } else {
       // If the response is not ok, alert the user
-      alert(response.statusText);
+      addPostStatusEl.textContent = 'Failed to upload post. Please try again'
     }
   }
 }

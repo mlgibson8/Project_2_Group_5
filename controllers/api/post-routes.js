@@ -1,44 +1,24 @@
 const router = require('express').Router();
-const { Post, User } = require('../../models');
-
-// GET all posts
-router.get('/', async (req, res) => {
-    await Post.findAll({
-        attributes: ['title', 'description'],
-        include: [
-            { model: User,
-            attributes: ['username']}
-        ]
-    })
-        .then((Post) => res.json(Post))
-        .catch((err) => {
-            res.json(err);
-        })
-});
-
-// GET one post
-router.get('/:id', async (req, res) => {
-    await Post.findOne({
-        where: {
-            id: req.params.id
-        },
-        attributes: ['title', 'description'],
-        include: [
-            { model: User,
-            attributes: ['username']}
-        ]
-    })
-        .then((User) => res.json(User))
-        .catch((err) => {res.json(err)})
-});
+const { Post, User, Movie } = require('../../models');
 
 // Create new post
 router.post('/', async (req, res) => {
-    await Post.create({
-        title: req.body.title,
-        description: req.body.description,
-        user_id: req.body.user_id,
-        movie_id: req.body.movie_id
+    const { title, description } = req.body;
+    const movie_id = req.movie.id;
+    const user_id = req.user.id;
+    
+    await Promise.all([Movie.findByPk(movie_id)], [User.findByPk(user_id)])
+    .then(([movie, user]) => {
+        if(!movie || !user) {
+            alert('Error adding post! Please try again');
+        } else {
+            return Post.create({
+            title,
+            description,
+            user_id: req.body.user.id,
+            movie_id: req.body.movie.id
+            })
+        }
     })
     .then((Post) => res.json(Post))
     .catch((err) => res.status(500).json(err))
