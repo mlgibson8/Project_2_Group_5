@@ -3,11 +3,13 @@ const { Post, User, Movie } = require('../../models');
 
 // Create new post
 router.post('/', async (req, res) => {
-    const { title, description } = req.body;
-    const movie_id = req.movie.id;
-    const user_id = req.user.id;
+    console.log(req.body);
+    console.log(req);
+    const { postTitle, postDesc, movie, user } = req.body;
+    const movieId = movie.id;
+    const userId = user.id;
     
-    await Promise.all([Movie.findByPk(movie_id)], [User.findByPk(user_id)])
+    await Promise.all([Movie.findByPk(movieId)], [User.findByPk(userId)])
     .then(([movie, user]) => {
         if(!movie || !user) {
             alert('Error adding post! Please try again');
@@ -15,8 +17,8 @@ router.post('/', async (req, res) => {
             return Post.create({
             title,
             description,
-            user_id: req.body.user.id,
-            movie_id: req.body.movie.id
+            user_id: userId,
+            movie_id: movieId
             })
         }
     })

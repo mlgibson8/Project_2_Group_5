@@ -19,6 +19,8 @@ async function newPostHandler(event) {
       body: JSON.stringify({
         postTitle,
         postDesc,
+        movie_id,
+        user_id
       }),
       headers: {
         'Content-Type': 'application/json',

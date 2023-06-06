@@ -34,6 +34,14 @@ Post.init(
         key: 'id',
       },
     },
+    // The movie_id is the foreign key and will be the matching link between the post and movie models
+    movie_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'movie',
+        key: 'id',
+      },
+    },
   },
   {
     sequelize,
