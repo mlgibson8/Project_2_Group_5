@@ -1,13 +1,13 @@
-<section class="container-fluid text-center" style="margin-top: 20px;">
-    <h2>Home</h2>
+<section class="container text-center" style="margin-top: 20px;">
+    <img src="/images/app-logo.svg" style="width: 50%; height: 50%;">
     <p>Welcome to our site!
         <br>
         Use the search bar below to explore your favorite movie and post content.</p>
     <form id="search-form" class="d-flex" role="search">
         <input id="search-bar" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button id="search-btn" class="btn btn-outline-success" type="button">Search</button>
+        <button id="search-btn" class="btn btn-info" type="button">Search</button>
     </form>
-    <div class="container" style="margin-top: 20px;">
+    <div class="card" style="margin-top: 20px;">
         <h3>Most Recent Posts</h3>
         {{#if posts.length}}
         {{#each posts as |post| }}
