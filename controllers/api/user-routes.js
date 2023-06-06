@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Post } = require('../../models');
 
 // GET all users
 router.get('/', async (req, res) => {
@@ -14,17 +14,26 @@ router.get('/', async (req, res) => {
 
 // GET one user
 router.get('/:id', async (req, res) => {
-    await User.findOne({
-        where: {
-            id: req.params.id
-        },
-        attributes: { exclude: ['password'] },
-        include: ['id', 'username', 'email', 'password']
-    })
-        .then((User) => res.json(User))
-        .catch((err) => {
-            res.json(err);
-        })
+    try {
+        const dbUserData = await User.findByPk(req.params.id, {
+            attributes: { exclude: ['password'] },
+            include: [
+            {
+              model: Post,
+              attributes: ['id', 'title', 'description', 'movie_id', 'movie_title'],
+            },
+          ],
+        });
+    
+        const user = dbUserData.get({ plain: true });
+    
+        res.render('user', {
+          ...user,
+          loggedIn: req.session.loggedIn
+        });
+      } catch (err) {
+        res.status(500).json(err);
+      }
 });
 
 // Create new user

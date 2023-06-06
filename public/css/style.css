@@ -34,11 +34,13 @@ a {
     cursor: pointer;
 }
 
-#about-btn {
+#about-btn,
+#contact-btn {
     color: #adb5bd;
 }
 
-#about-btn:hover {
+#about-btn:hover,
+#contact-btn:hover {
     color: white;
     cursor: pointer;   
 }
@@ -52,6 +54,15 @@ a {
 
 .card-body{
     border: none;
+}
+
+.form-control {
+    background-color: white;
+}
+
+.form-control:target {
+    background-color: white;
+    color: black;
 }
 
 .video-page {
