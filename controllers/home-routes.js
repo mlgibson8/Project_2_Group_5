@@ -1,10 +1,42 @@
 const router = require('express').Router();
+const { Post, User } = require('../models');
+const withAuth = require('../utils/auth');
 
 // Renders homepage
 router.get('/', async (req, res) => {
     res.render('homepage', {
         loggedIn: req.session.loggedIn
     });
+});
+
+// Return all posts associated with the user
+router.get('/dashboard', withAuth, async (req, res) => {
+    // Add a new route here that returns all posts associated with user, you can easily extract this via 'req.session.user_id'
+    // Return all users active posts in the data base
+    try { 
+      const dbUserData = await User.findByPk(req.session.user_id, {
+        attributes: { exclude: ['password'] },
+        include: [{ model: Post }],
+    });
+  
+    const user = dbUserData.get({ plain: true });
+  
+    res.render('dashboard', {
+      ...user,
+      loggedIn: true
+    });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+
+// Renders the login page 
+router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/dashboard');
+        return;
+    }
+    res.render('login')
 });
 
 // Fetches movie data
@@ -41,15 +73,6 @@ router.get('/search/:keyword', (req, res) => {
             })
         })
         .catch(err => console.error(err));
-});
-
-// Renders the login page 
-router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
-        res.redirect('/');
-        return;
-    }
-    res.render('login')
 });
 
 router.get("/movie/:id", (req, res) => {
