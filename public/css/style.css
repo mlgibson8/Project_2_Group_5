@@ -1,5 +1,77 @@
+body {
+    height: 100%;
+    color: white;
+    background-image: url("../images/movie-theater.jpeg");
+    background-size: 1920px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    color: #84bbff;
+}
+
+.container {
+    background-color: rgba(34, 34, 34, 0.8);
+    color: #fff;
+    margin: auto;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.nav-link {
+    color: #adb5bd;
+}
+
+.nav-link:hover {
+    color: white;
+    cursor: pointer;
+}
+
+#about-btn {
+    color: #adb5bd;
+}
+
+#about-btn:hover {
+    color: white;
+    cursor: pointer;   
+}
+
+.card {
+    background-color: #444;
+    border: none;
+    color: #fff;
+    padding: 10px;
+}
+
+.card-body{
+    border: none;
+}
+
 .video-page {
     margin-right: auto;
     margin-left: auto;
     text-align: center;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+  }
+
+@media screen and (max-width: 992px) {
+    .selected-movie-display {
+        display: block;
+    } 
+    #selected-movie-image {
+        width: 100%;
+        height: auto;
+    }
 }

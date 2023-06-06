@@ -1,63 +1,61 @@
 <section class="container position-relative" style="margin: 20px;">
-    <div class="card">
-        <div class="card-body">
-            <div class="row">
-                <img src="{{data.photo}}" class="col" style="max-width: 25%; height: 25%;">
+    <h1 class="text-center">{{data.title}}</h1>
+    <div class="row selected-movie-display">
+                <img id="selected-movie-image" src="{{data.photo}}" class="col-4">
                 <div class="col">
-                    <h1 class="text-center">{{data.title}}</h1>
                     <p style="font-size: 18pt;">{{data.description}}</p>
-                    <div class="container video-page">
+                    <div class="card video-page">
                         <h3>{{data.title}} Trailer</h3>
-                        <div class="container">
-                            <div class="row">
-                                <div class="bg-primary video-play embed-responsive embed-responsive-16by9">
-                                    <iframe class="embed-responsive-item"
-                                        src="https://www.youtube.com/embed/{{data.trailerId}}" allowfullscreen></iframe>
-                                </div>
-
+                        <div class="card-body">
+                            <div class="bg-primary video-play embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item"
+                                    src="https://www.youtube.com/embed/{{data.trailerId}}" allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h4 class="text-center">Create a Post</h4>
-                <p class="text-center">Love it? Hate it? Let everyone know!<br>Click on "Add Post" to write your own review of this movie.</p>
-                {{#if loggedIn}}
-                <button id="show-add-post" type="button" class="btn btn-primary justify-content-center" onclick="toggleAddPost()">Add
-                    Post</button>
-                <div id="add-post-section" style="display: none;">
-                    <form id="add-post-form" class="form" style="padding: 10px;">
-                        <p id="add-post-status" style="color: red;"></p>
-                        <div class="mb-3">
-                            <label for="add-post-title" class="form-label">Title</label>
-                            <input id="add-post-title" type="text" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="add-post-description" class="form-label">Description</label>
-                            <input id="add-post-description" type="text" class="form-control">
-                        </div>
-                        <fieldset disabled class="mb-3 visually-hidden">
-                            <label for="post-movie-id" class="form-label"></label>
-                            <input id="post-movie-id" type="text" class="form-control" value="{{data.id}}">
-                            <label for="post-movie-title" class="form-label"></label>
-                            <input id="post-movie-title" type="text" class="form-control" value="{{data.title}}">
-                        </fieldset>
-                        <button id="add-post-submit-btn" class="btn btn-primary" type="submit">Submit</button>
-                    </form>
-                </div>
-                <div id="list-post-section">
-                    {{#each movie.posts as |post|}}
-                    {{> post-details}}
-                    {{/each}}
-                </div>
-                {{else}}
-                <a href="/login">Please login first to access this content.</a>
-                {{/if}}
+    </div>
+    <div class="card" style="margin-top: 10px;">
+        <div class="card-body">
+            <h4 class="text-center">Create a Post</h4>
+            <p class="text-center">Love it? Hate it? Let everyone know!<br>Click on "Add Post" to write your own review of this movie.</p>
+            {{#if loggedIn}}
+            <button id="show-add-post" 
+                type="button" 
+                class="btn btn-primary justify-content-center" 
+                onclick="toggleAddPost()">Add Post</button>
+            <div id="add-post-section" style="display: none;">
+                <form id="add-post-form" class="form" style="padding: 10px;">
+                    <p id="add-post-status" style="color: #f1aeb5;"></p>
+                    <div class="mb-3">
+                        <label for="add-post-title" class="form-label">Title</label>
+                        <input id="add-post-title" type="text" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="add-post-description" class="form-label">Description</label>
+                        <input id="add-post-description" type="text" class="form-control">
+                    </div>
+                    <fieldset disabled class="mb-3 visually-hidden">
+                        <label for="post-movie-id" class="form-label"></label>
+                        <input id="post-movie-id" type="text" class="form-control" value="{{data.id}}">
+                        <label for="post-movie-title" class="form-label"></label>
+                        <input id="post-movie-title" type="text" class="form-control" value="{{data.title}}">
+                    </fieldset>
+                    <button id="add-post-submit-btn" class="btn btn-primary" type="submit">Submit</button>
+                </form>
+            </div>
+            <div id="list-post-section">
+            {{#each movie.posts as |post|}}
+            {{> post-details}}
+            {{/each}}
+            </div>
+            {{else}}
+            <a href="/login">Please login first to access this content.</a>
+            {{/if}}
             </div>
         </div>
+    </div>
 </section>
 
 <script src="/public/movie.js"></script>
