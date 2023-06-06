@@ -1,4 +1,4 @@
-const editPosts = document.querySelectorAll('.edit-post-id');
+const editPosts = document.querySelectorAll('edit-post-btn');
 // Function to edit a post
 async function editPost(newTitle, newBody, postId) {
   const response = await fetch(`/api/posts/${postId}`, {
