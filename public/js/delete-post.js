@@ -1,29 +1,23 @@
-const posts = document.querySelectorAll('.delete-post-id');
-// Function to delete a post by id
-async function deletePost(id) {
-  const response = await fetch(`/api/posts/${id}`, {
-    method: 'DELETE',
-  });
-// If the response is ok, refresh the page
-  if (response.ok) {
-    document.location.replace('/dashboard');
-  } else {
-    alert(response.statusText);
+const delPostHandler = async (event) => {
+  if (event.target.hasAttribute('data-id')) {
+    const id = event.target.getAttribute('data-id');
+    const postStatusEl = document.getElementById('post-status');
+
+    const response = await fetch(`/api/posts/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      postStatusEl.textContent = 'Post deleted.';
+      setTimeout(() => {
+        document.location.replace('/dashboard');
+      }, 750);
+    } else {
+      postStatusEl.textContent= 'Failed to delete post. Please try again';
+    }
   }
-}
-// Add the event listener to the delete button
-posts.forEach((post) => {
-  post.addEventListener('click', () => {
-    deletePost(post.dataset.postId);
-  });
-});
+};
 
-// Add the event listener to the delete button
-const deletePostBtn = document.getElementById('delete-post-btn');
-deletePostBtn.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    let commentId = btn.dataset.commentId;
-    deleteComment(commentId);
-  });
-});
-
+document
+  .querySelector('.user-post-list')
+  .addEventListener('click', delPostHandler);

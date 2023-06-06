@@ -1,9 +1,9 @@
 <section class="card">
   <div class="card-body">
-    <h3 class="post-title">{{post.title}}</h3>
+    <h2 class="post-title">{{post.title}} by <a href="/user/{{user.id}}">{{user.username}}</a></h2>
+    <h4 class="post-movie"><a href="/movie/{{post.movie_id}}">{{post.movie_title}}</a></h4>
     <p>{{post.description}}</p>
-    <a id="view-comments-btn" class="btn btn-primary">View Comments</a>
-    <!-- If the user is logged in, render the gallery content -->
+    {{!-- <a id="view-comments-btn" class="btn btn-primary">View Comments</a>
     <div id="comments-display" class="flex-row justify-center">
         <div class="card">
             <div class="card-body">
@@ -24,11 +24,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
   </div>
 </section>
 
-<script src="/js/add-comment.js"></script>
+{{!-- <script src="/js/add-comment.js"></script>
 <script>
     function toggleAddComment() {
         var addCommentSection = document.getElementById("add-comment-section");
@@ -41,4 +41,4 @@
             showAddComment.textContent = "Add Comment";
         }
     };
-</script>
+</script> --}}
