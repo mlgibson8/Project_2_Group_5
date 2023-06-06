@@ -9,18 +9,16 @@
     </form>
     <div class="card" style="margin-top: 20px;">
         <h3>Most Recent Posts</h3>
-        {{#if posts.length}}
-        {{#each posts as |post| }}
-        <div class="row">
-          <div class="col">
-            <h5><a href="/post/{{post.id}}">{{post.title}}"</a> by <a href="/user/{{user.id}}">{{user.username}}</a></h5>
-            <h6 class="mb-2 text-body-secondary">Movie: <a href="/movie/{{post.movie_id}}">{{post.movie_title}}</a></h6>
-            <p>{{post.description}}</p>
-          </div>
-        </div>
-        {{/each}}
+        {{#if loggedIn}}
+            {{#if posts.length}}
+                {{#each posts as |post| }}
+                {{> post-details}}
+                {{/each}}
+            {{else}}
+            <p>No posts yet. Search for a movie to create a post.</p>
+            {{/if}}
         {{else}}
-        <p>No posts yet. Search for a movie to create a post.</p>
+        <a href="/login">Login or create an account to join the conversation!</a>
         {{/if}}
     </div>
 </section>

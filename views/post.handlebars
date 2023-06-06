@@ -1,8 +1,13 @@
-<section class="card">
-  <div class="card-body">
-    <h2 class="post-title">{{post.title}} by <a href="/user/{{user.id}}">{{user.username}}</a></h2>
-    <h4 class="post-movie"><a href="/movie/{{post.movie_id}}">{{post.movie_title}}</a></h4>
-    <p>{{post.description}}</p>
+<section class="container">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="post-title">{{title}}</h2>
+            <h5 class="post-owner">Posted by: <a href="/user/{{user.id}}">{{user.username}}</a></h5>
+            <h5 class="post-movie">Movie: <a href="/movie/{{movie_id}}">{{movie_title}}</a></h5>
+            <p>{{description}}</p>
+        </div>
+    </div>
+
     {{!-- <a id="view-comments-btn" class="btn btn-primary">View Comments</a>
     <div id="comments-display" class="flex-row justify-center">
         <div class="card">
@@ -25,7 +30,6 @@
             </div>
         </div>
     </div> --}}
-  </div>
 </section>
 
 {{!-- <script src="/js/add-comment.js"></script>
