@@ -1,4 +1,5 @@
 const { application } = require("express");
+require('dotenv').config();
 
 const options = {
     method: 'GET',
@@ -35,8 +36,9 @@ document.getElementById('search-form').addEventListener('submit'), function (eve
 
 $(document).ready(() => {
   const performSearch = () => {
-    let searchQuery = $('.search input:text').val() + ' trailer';
-    let endpoint = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&key=AIzaSyAEVWOKkSWHiaeWk2oIOSBXz2vV_0j9ioY&q=' + searchQuery;
+      let searchQuery = $('.search input:text').val() + ' trailer';
+      const apiKey = process.env.YOUTUBE_API_KEY; // Access the API key from the environment variable
+      let endpoint = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&key=${apiKey}&q=${searchQuery}`;
     $.ajax({
       url: endpoint,
       method: 'GET',
