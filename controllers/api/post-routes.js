@@ -16,29 +16,6 @@ router.get('/', async (req, res) => {
   })
 });
 
-// GET one post
-router.get('/post/:id', async (req, res) => {
-  try {
-    const dbPostData = await Post.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['id', 'username'],
-        },
-      ],
-    });
-
-    const post = dbPostData.get({ plain: true });
-
-    res.render('post', {
-      ...post,
-      loggedIn: req.session.loggedIn
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 // Create new post
 router.post('/', withAuth, async (req, res) => {
     try {
